@@ -1,0 +1,51 @@
+{
+  "name": "message-mate-js",
+  "version": "0.0.1",
+  "description": "A messaging library for Javascript",
+  "author": "",
+  "license": "ISC",
+  "main": "index.js",
+  "module": "es/index.js",
+  "scripts": {
+    "test": "babel-node spec/run.js --presets @babel/env --plugins transform-class-properties",
+    "clean": "rm -rf es && rm -rf lib && rm -rf dist && rm -rf node_modules && rm -f package-lock.json",
+    "build": "npm run build:umd && npm run build:umd:min && npm run build:es && npm run build:cjs",
+    "build:umd": "cross-env NODE_ENV=umd rollup -c",
+    "build:umd:min": "cross-env NODE_ENV=umd-min rollup -c",
+    "build:es": "cross-env NODE_ENV=es rollup -c",
+    "build:cjs": "cross-env NODE_ENV=cjs rollup -c",
+    "prepack": "npm run build"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.0",
+    "@babel/node": "^7.5.0",
+    "@babel/plugin-proposal-class-properties": "^7.5.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.0",
+    "@babel/preset-env": "^7.5.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "cross-env": "^5.1.4",
+    "jasmine": "^2.2.1",
+    "jasmine-core": "^2.99.1",
+    "karma": "^0.13.22",
+    "karma-jasmine": "^0.3.8",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "karma-webpack": "^1.8.1",
+    "mock-socket": "^8.0.5",
+    "phantomjs-prebuilt": "^2.1.16",
+    "rollup": "^1.16.6",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-uglify": "^6.0.2",
+    "webpack": "^1.15.0"
+  },
+  "files": [
+    "dist",
+    "lib",
+    "es"
+  ],
+  "dependencies": {
+    "nodeunit": "^0.11.3",
+    "react": "^16.8.6"
+  }
+}
